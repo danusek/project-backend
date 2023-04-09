@@ -1,10 +1,19 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect
 
 app = Flask(__name__)
 
 @app.route("/")
 def hello():
-    return "Hello, World!"
+    return """
+    <html>
+        <body>
+            <h1>Hello, World!</h1>
+            <form action="/hello" method="get">
+                <input type="submit" value="Dalej">
+            </form>
+        </body>
+    </html>
+    """
 
 @app.route("/hello", methods=["GET", "POST"])
 def greet():
